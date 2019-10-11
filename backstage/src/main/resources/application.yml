@@ -14,11 +14,11 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/shiro
-    username: root
+    url: jdbc:mysql://47.95.14.19:3306/shiro
+    username: lala
     password: lcl20000323
   redis:
-    host: localhost
+    host: 47.95.14.19
     port: 6379
     jedis:
       pool:
@@ -30,3 +30,5 @@ spring:
       shutdown-timeout: 500
 mybatis:
   mapper-locations: "classpath*:mapper/*.xml"
+#server:
+#  port: 123
