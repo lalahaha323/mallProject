@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.backstage.mapper.LogMapper">
+
+    <select id="userLogin" resultType="Integer">
+        SELECT count(*) FROM user
+        WHERE user_name = #{user_name} AND user_password = #{user_password}
+    </select>
+    <select id="findEmail" resultType="Integer">
+        SELECT count(*) FROM user
+        WHERE user_email = #{user_email}
+    </select>
+    <select id="findName" resultType="Integer">
+        SELECT count(*) FROM user
+        WHERE user_name = #{user_name}
+    </select>
+    <select id="getByUserName" resultType="com.example.demo.backstage.pojo.User">
+        SELECT user_id id, user_name name, user_password password, user_email email FROM user
+        WHERE user_name = #{user_name}
+    </select>
+    <insert id="insertRegister" >
+        INSERT INTO user(user_name, user_password, user_email)
+        VALUES (#{user_name}, #{user_password}, #{user_email})
+    </insert>
+    <select id="getRoles" resultType="com.example.demo.backstage.pojo.User_Role">
+        SELECT user_id userId, role_id roleId FROM user_role
+        WHERE user_id = #{user_id}
+    </select>
+    <select id="getPermissions" resultType="com.example.demo.backstage.pojo.Role_Permission">
+        SELECT * FROM user
+        WHERE role_id = #{role_id}
+    </select>
+    <select id="getById" resultType="com.example.demo.backstage.pojo.Permission">
+        SELECT * FROM user
+        WHERE per_id = #{per_id}
+    </select>
+
+
+    <!--    <resultMap id="userMap" type="com.example.mall2.pojo.User">-->
+    <!--        <id property="id" column="user_id"/>-->
+    <!--        <result property="name" column="user_name"/>-->
+    <!--        <result property="password" column="user_password"/>-->
+    <!--    </resultMap>-->
+
+    <!--    <sql id="queryCondition">-->
+    <!--        <where>-->
+    <!--            <if test="uid != null and uid != ''">-->
+    <!--                and id = #{id}-->
+    <!--            </if>-->
+    <!--            <if test="username != null and username != ''">-->
+    <!--                and name = #{name}-->
+    <!--            </if>-->
+    <!--            <if test="password != null and password != ''">-->
+    <!--                and password = #{password}-->
+    <!--            </if>-->
+    <!--            <if test="keywords != null and keywords != ''">-->
+    <!--                and name like CONCAT('%', #{keywords},'%')-->
+    <!--            </if>-->
+    <!--        </where>-->
+    <!--    </sql>-->
+
+    <!--    <select id="getLogin" resultMap="int">-->
+    <!--        SELECT count(*) FROM user WHERE user_name = #{user_name} AND user_password = #{user_password}-->
+    <!--&lt;!&ndash;        <include refid="queryCondition" />&ndash;&gt;-->
+    <!--    </select>-->
+
+    <!--    <select id="getById" parameterType="int" resultMap="userMap">-->
+    <!--        SELECT * FROM user WHERE id =#{id}-->
+    <!--    </select>-->
+
+    <!--    <select id="getByUserName" parameterType="String" resultMap="userMap">-->
+    <!--        SELECT * FROM user WHERE name =#{name}-->
+    <!--    </select>-->
+
+    <!--    <insert id="create" parameterType="org.phoenix.bean.User">-->
+    <!--        &lt;!&ndash;<selectKey resultType="int"  order="AFTER" keyProperty="id" >&ndash;&gt;-->
+    <!--        &lt;!&ndash;SELECT LAST_INSERT_ID()&ndash;&gt;-->
+    <!--        &lt;!&ndash;</selectKey>&ndash;&gt;-->
+    <!--        INSERT INTO user(-->
+    <!--        name,-->
+    <!--        password-->
+    <!--        )VALUES(-->
+    <!--        #{name},-->
+    <!--        #{password}-->
+    <!--        )-->
+    <!--    </insert>-->
+
+    <!--    <update id="update" parameterType="com.example.mall2.pojo.User">-->
+    <!--        UPDATE user SET-->
+    <!--        name = #{name},-->
+    <!--        password = #{password}-->
+    <!--        WHERE id = #{id}-->
+    <!--    </update>-->
+
+    <!--    <delete id="delete" parameterType="int">-->
+    <!--        DELETE FROM user WHERE id = #{uid}-->
+    <!--    </delete>-->
+
+    <!--    <select id="getRoles" parameterType="int" resultMap="userRoleMap">-->
+    <!--        SELECT * FROM user_role WHERE USER_ID=#{id}-->
+    <!--    </select>-->
+
+</mapper>
