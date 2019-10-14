@@ -17,7 +17,7 @@ public class IndexController {
     @Autowired
     IndexService indexService;
 
-    @PostMapping("/picture")
+    @PostMapping("/activity")
     public Result userLogin() {
         Result result = indexService.findActivity();
         return result;

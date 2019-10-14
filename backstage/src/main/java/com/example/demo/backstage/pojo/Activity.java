@@ -10,7 +10,7 @@ import java.math.BigInteger;
 
 @Data
 public class Activity {
-    private BigInteger id;
+    private Integer id;
     private String name;
     private String pic;
     private String link;
