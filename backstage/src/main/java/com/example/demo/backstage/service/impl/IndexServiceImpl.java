@@ -4,15 +4,14 @@ import com.example.demo.backstage.mapper.IndexMapper;
 import com.example.demo.backstage.mapper.RedisMapper;
 import com.example.demo.backstage.pojo.Activity;
 import com.example.demo.backstage.pojo.Result;
+import com.example.demo.backstage.pojo.Shop;
 import com.example.demo.backstage.service.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.sound.midi.SysexMessage;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import javax.swing.plaf.synth.SynthUI;
+import java.util.*;
 
 /**
  * @author lala
@@ -23,6 +22,8 @@ public class IndexServiceImpl implements IndexService {
 
     @Autowired
     RedisMapper redisMapper;
+    @Autowired
+    IndexMapper indexMapper;
 
     @Override
     public Result findActivity() {
@@ -71,8 +72,18 @@ public class IndexServiceImpl implements IndexService {
             }
         }
         result.setCode(23);
-        result.setMsg("发送首页成功");
+        result.setMsg("发送首页活动成功");
         result.setData(arrayList);
+        return result;
+    }
+
+    @Override
+    public Result findShop() {
+        Result result = new Result();
+        ArrayList<Shop> arraylist = indexMapper.findShop();
+        result.setCode(24);
+        result.setMsg("发送首页商家成功");
+        result.setData(arraylist);
         return result;
     }
 }
