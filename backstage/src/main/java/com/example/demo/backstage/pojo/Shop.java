@@ -13,4 +13,8 @@ public class Shop {
     private String pic;
     private String link;
     private Integer user_id;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> lcl
