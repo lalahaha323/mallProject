@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.backstage.mapper.IndexMapper">
 
-    <select id="findActivity" resultType="com.example.demo.backstage.pojo.Activity">
-        SELECT * FROM activity
+    <select id="findShop" resultType="com.example.demo.backstage.pojo.Shop">
+        SELECT id,name,pic,link,user_id FROM product_shop
     </select>
 </mapper>

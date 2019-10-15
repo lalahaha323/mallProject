@@ -19,8 +19,14 @@ public class IndexController {
 
 
     @PostMapping("/activity")
-    public Result userLogin() {
+    public Result findActivity() {
         Result result = indexService.findActivity();
+        return result;
+    }
+
+    @PostMapping("/shop")
+    public Result findShop() {
+        Result result = indexService.findShop();
         return result;
     }
 }

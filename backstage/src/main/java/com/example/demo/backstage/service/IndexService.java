@@ -9,4 +9,5 @@ import com.example.demo.backstage.pojo.Result;
 
 public interface IndexService {
     public Result findActivity();
+    public Result findShop();
 }
