@@ -1,8 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.backstage.mapper.IndexMapper">
+    <resultMap id="IndexProductMap" type="com.example.demo.backstage.pojo.IndexProduct">
+        <result property="monthSaleNumber" column="month_sale_number"/>
+        <result property="productShopId" column="product_shop_id"/>
+        <result property="productSpuId" column="product_spu_id"/>
+        <association property="indexProductShow"
+                     column="{product_spu_id=product_spu_id,product_shop_id=product_shop_id}"
+                     select="com.example.demo.backstage.mapper.IndexMapper.getOneTop"/>
+    </resultMap>
 
-    <select id="findShop" resultType="com.example.demo.backstage.pojo.Shop">
-        SELECT id,name,pic,link,user_id FROM product_shop
+    <resultMap id="ShopMap" type="com.example.demo.backstage.pojo.Shop">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="pic" column="pic"/>
+        <result property="link" column="link"/>
+        <result property="user_id" column="user_id"/>
+    </resultMap>
+    <sql id="productCols">
+        month_sale_number,product_shop_id,product_spu_id
+    </sql>
+
+    <sql id="shopCols">
+        id,name,pic,link,user_id
+    </sql>
+
+    <select id="findShop" resultMap="ShopMap">
+        SELECT <include refid="shopCols"/> FROM product_shop
+    </select>
+
+    <select id="findTops" resultMap="IndexProductMap">
+        SELECT <include refid="productCols"/> FROM product_sale_number
+        WHERE product_category_id = 4 ORDER BY month_sale_number DESC LIMIT 5
+    </select>
+
+    <select id="getOneTop" resultType="com.example.demo.backstage.pojo.IndexProductShow">
+        SELECT pic,big_title as title,price,link FROM product_sku
+        WHERE product_spu_id = #{product_spu_id} AND product_shop_id = #{product_shop_id}
+        LIMIT 1
     </select>
 </mapper>

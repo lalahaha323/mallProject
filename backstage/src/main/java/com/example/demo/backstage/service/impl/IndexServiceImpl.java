@@ -3,9 +3,12 @@ package com.example.demo.backstage.service.impl;
 import com.example.demo.backstage.mapper.IndexMapper;
 import com.example.demo.backstage.mapper.RedisMapper;
 import com.example.demo.backstage.pojo.Activity;
+import com.example.demo.backstage.pojo.IndexProduct;
 import com.example.demo.backstage.pojo.Result;
 import com.example.demo.backstage.pojo.Shop;
 import com.example.demo.backstage.service.IndexService;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +21,7 @@ import java.util.Set;
 /**
  * @author lala
  */
-
+@Slf4j
 @Service
 public class IndexServiceImpl implements IndexService {
 
@@ -86,6 +89,16 @@ public class IndexServiceImpl implements IndexService {
         result.setCode(24);
         result.setMsg("发送首页商家成功");
         result.setData(arraylist);
+        return result;
+    }
+
+    @Override
+    public Result findTops() {
+        Result result = new Result();
+        ArrayList<IndexProduct> arrayList = indexMapper.findTops();
+        result.setCode(25);
+        result.setMsg("发送上装销量排行前5成功");
+        result.setData(arrayList);
         return result;
     }
 }
