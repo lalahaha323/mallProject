@@ -73,4 +73,11 @@ public class IndexController {
         Result result = indexService.findComputers();
         return result;
     }
+
+    //返回销量前5的零食
+    @PostMapping("/snacksSort")
+    public Result findSnacks() {
+        Result result = indexService.findSnacks();
+        return result;
+    }
 }

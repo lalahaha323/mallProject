@@ -29,4 +29,5 @@ public interface IndexMapper {
     public ArrayList<IndexProduct> findShoes();
     public ArrayList<IndexProduct> findPhones();
     public ArrayList<IndexProduct> findComputers();
+    public ArrayList<IndexProduct> findSnacks();
 }
