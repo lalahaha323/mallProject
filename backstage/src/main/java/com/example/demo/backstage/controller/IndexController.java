@@ -52,4 +52,11 @@ public class IndexController {
         Result result = indexService.findSkirts();
         return result;
     }
+
+    //返回销量前5的鞋子
+    @PostMapping("/shoesSort")
+    public Result findShoes() {
+        Result result = indexService.findShoes();
+        return result;
+    }
 }
