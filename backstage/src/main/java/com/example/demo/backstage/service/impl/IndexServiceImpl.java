@@ -135,7 +135,17 @@ public class IndexServiceImpl implements IndexService {
         Result result = new Result();
         ArrayList<IndexProduct> arrayList = indexMapper.findPhones();
         result.setCode(29);
-        result.setMsg("发送鞋子销量排行前5成功");
+        result.setMsg("发送手机销量排行前5成功");
+        result.setData(arrayList);
+        return result;
+    }
+
+    @Override
+    public Result findComputers() {
+        Result result = new Result();
+        ArrayList<IndexProduct> arrayList = indexMapper.findComputers();
+        result.setCode(29);
+        result.setMsg("发送电脑销量排行前5成功");
         result.setData(arrayList);
         return result;
     }
