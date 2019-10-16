@@ -101,4 +101,15 @@ public class IndexServiceImpl implements IndexService {
         result.setData(arrayList);
         return result;
     }
+
+    @Override
+    public Result findPants() {
+        Result result = new Result();
+        ArrayList<IndexProduct> arrayList = indexMapper.findPants();
+        result.setCode(25);
+        result.setMsg("发送裤子销量排行前5成功");
+        result.setData(arrayList);
+        return result;
+    }
+
 }

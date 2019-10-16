@@ -7,7 +7,7 @@
         <result property="productSpuId" column="product_spu_id"/>
         <association property="indexProductShow"
                      column="{product_spu_id=product_spu_id,product_shop_id=product_shop_id}"
-                     select="com.example.demo.backstage.mapper.IndexMapper.getOneTop"/>
+                     select="getOne"/>
     </resultMap>
 
     <resultMap id="ShopMap" type="com.example.demo.backstage.pojo.Shop">
@@ -34,9 +34,13 @@
         WHERE product_category_id = 4 ORDER BY month_sale_number DESC LIMIT 5
     </select>
 
-    <select id="getOneTop" resultType="com.example.demo.backstage.pojo.IndexProductShow">
+    <select id="getOne" resultType="com.example.demo.backstage.pojo.IndexProductShow">
         SELECT pic,big_title as title,price,link FROM product_sku
         WHERE product_spu_id = #{product_spu_id} AND product_shop_id = #{product_shop_id}
         LIMIT 1
+    </select>
+    <select id="findPants" resultMap="IndexProductMap">
+        SELECT <include refid="productCols"/> FROM product_sale_number
+        WHERE product_category_id = 5 ORDER BY month_sale_number DESC LIMIT 5
     </select>
 </mapper>
