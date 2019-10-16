@@ -12,4 +12,5 @@ public interface IndexService {
     public Result findShop();
     public Result findTops();
     public Result findPants();
+    public Result findSkirts();
 }

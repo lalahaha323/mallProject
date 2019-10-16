@@ -39,8 +39,14 @@
         WHERE product_spu_id = #{product_spu_id} AND product_shop_id = #{product_shop_id}
         LIMIT 1
     </select>
+
     <select id="findPants" resultMap="IndexProductMap">
         SELECT <include refid="productCols"/> FROM product_sale_number
         WHERE product_category_id = 5 ORDER BY month_sale_number DESC LIMIT 5
+    </select>
+
+    <select id="findSkirts" resultMap="IndexProductMap">
+        SELECT <include refid="productCols"/> FROM product_sale_number
+        WHERE product_category_id = 6 ORDER BY month_sale_number DESC LIMIT 5
     </select>
 </mapper>

@@ -25,4 +25,5 @@ public interface IndexMapper {
                                       @Param("product_spu_id") int product_spu_id);
 
     public ArrayList<IndexProduct> findPants();
+    public ArrayList<IndexProduct> findSkirts();
 }

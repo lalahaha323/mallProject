@@ -106,8 +106,18 @@ public class IndexServiceImpl implements IndexService {
     public Result findPants() {
         Result result = new Result();
         ArrayList<IndexProduct> arrayList = indexMapper.findPants();
-        result.setCode(25);
+        result.setCode(26);
         result.setMsg("发送裤子销量排行前5成功");
+        result.setData(arrayList);
+        return result;
+    }
+
+    @Override
+    public Result findSkirts() {
+        Result result = new Result();
+        ArrayList<IndexProduct> arrayList = indexMapper.findSkirts();
+        result.setCode(27);
+        result.setMsg("发送裙子销量排行前5成功");
         result.setData(arrayList);
         return result;
     }
