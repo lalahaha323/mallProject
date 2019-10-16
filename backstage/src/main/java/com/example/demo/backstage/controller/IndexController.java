@@ -45,4 +45,11 @@ public class IndexController {
         Result result = indexService.findPants();
         return result;
     }
+
+    //返回销量前5的裙子
+    @PostMapping("/skirtsSort")
+    public Result findSkirts() {
+        Result result = indexService.findSkirts();
+        return result;
+    }
 }
