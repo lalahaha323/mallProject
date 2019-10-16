@@ -60,4 +60,8 @@
         WHERE product_category_id = 8 ORDER BY month_sale_number DESC LIMIT 5
     </select>
 
+    <select id="findComputers" resultMap="IndexProductMap">
+        SELECT <include refid="productCols"/> FROM product_sale_number
+        WHERE product_category_id = 9 ORDER BY month_sale_number DESC LIMIT 5
+    </select>
 </mapper>

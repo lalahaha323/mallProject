@@ -66,4 +66,11 @@ public class IndexController {
         Result result = indexService.findPhones();
         return result;
     }
+
+    //返回销量前5的电脑
+    @PostMapping("/computersSort")
+    public Result findComputers() {
+        Result result = indexService.findComputers();
+        return result;
+    }
 }
