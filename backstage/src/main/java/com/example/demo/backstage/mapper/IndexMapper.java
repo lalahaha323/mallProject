@@ -27,6 +27,8 @@ public interface IndexMapper {
 
     public ArrayList<IndexProduct> findTops();
 
-    public IndexProductShow getOneTop(@Param("product_shop_id") int product_shop_id,
+    public IndexProductShow getOne(@Param("product_shop_id") int product_shop_id,
                                       @Param("product_spu_id") int product_spu_id);
+
+    public ArrayList<IndexProduct> findPants();
 }
