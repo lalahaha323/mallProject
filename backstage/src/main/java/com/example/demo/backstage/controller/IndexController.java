@@ -29,4 +29,10 @@ public class IndexController {
         Result result = indexService.findShop();
         return result;
     }
+
+    @PostMapping("/topsSort")
+    public Result findTops() {
+        Result result = indexService.findTops();
+        return result;
+    }
 }
