@@ -120,4 +120,14 @@ public class IndexServiceImpl implements IndexService {
         return result;
     }
 
+    @Override
+    public Result findShoes() {
+        Result result = new Result();
+        ArrayList<IndexProduct> arrayList = indexMapper.findShoes();
+        result.setCode(28);
+        result.setMsg("发送鞋子销量排行前5成功");
+        result.setData(arrayList);
+        return result;
+    }
+
 }
