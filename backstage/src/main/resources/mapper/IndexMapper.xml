@@ -54,4 +54,10 @@
         SELECT <include refid="productCols"/> FROM product_sale_number
         WHERE product_category_id = 7 ORDER BY month_sale_number DESC LIMIT 5
     </select>
+
+    <select id="findPhones" resultMap="IndexProductMap">
+        SELECT <include refid="productCols"/> FROM product_sale_number
+        WHERE product_category_id = 8 ORDER BY month_sale_number DESC LIMIT 5
+    </select>
+
 </mapper>

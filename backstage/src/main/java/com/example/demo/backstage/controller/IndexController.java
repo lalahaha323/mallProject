@@ -59,4 +59,11 @@ public class IndexController {
         Result result = indexService.findShoes();
         return result;
     }
+
+    //返回销量前5的手机
+    @PostMapping("/phonesSort")
+    public Result findPhones() {
+        Result result = indexService.findPhones();
+        return result;
+    }
 }
